@@ -11,13 +11,13 @@
 #
 
 # 修改openwrt登陆地址,把下面的 192.168.10.1 修改成你想要的就可以了
-sed -i 's/192.168.1.1/192.168.1.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.31.3/192.168.31.3/g' package/base-files/files/bin/config_generate
 
 # 修改子网掩码
 #sed -i 's/255.255.255.0/255.255.0.0/g' package/base-files/files/bin/config_generate
 
 # 修改主机名字，把 iStore OS 修改你喜欢的就行（不能纯数字或者使用中文）
-# sed -i 's/OpenWrt/iStore OS/g' package/base-files/files/bin/config_generate
+# sed -i 's/OpenWrt/iStore OS-5G/g' package/base-files/files/bin/config_generate
 
 # ttyd自动登录
 # sed -i "s?/bin/login?/usr/libexec/login.sh?g" ${GITHUB_WORKSPACE}/openwrt/package/feeds/packages/ttyd/files/ttyd.config
@@ -129,35 +129,10 @@ cp -rf ../../kiddin9/luci-app-onliner/* luci-app-onliner
 # svn export https://github.com/immortalwrt/luci/trunk/applications/luci-app-gowebdav
 
 # 科学上网和代理应用
-#SSR
-# svn export https://github.com/fw876/helloworld/trunk helloworld
-# svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-ssr-plus
-# mkdir luci-app-ssr-plus
-# cp -rf ../../kiddin9/luci-app-ssr-plus/* luci-app-ssr-plus
-# cp -rf ../../kiddin9/dns2socks/* dns2socks
-# cp -rf ../../kiddin9/lua-neturl/* lua-neturl
-# cp -rf ../../kiddin9/microsocks/* microsocks
-# cp -rf ../../kiddin9/tcping/* tcping
-# cp -rf ../../kiddin9/shadowsocksr-libev/* shadowsocksr-libev
-# cp -rf ../../kiddin9/chinadns-ng/* chinadns-ng
-# cp -rf ../../kiddin9/mosdns/* mosdns
-# cp -rf ../../kiddin9/hysteria/* hysteria
-# cp -rf ../../kiddin9/tuic-client/* tuic-client
-# cp -rf ../../kiddin9/shadow-tls/* shadow-tls
-# cp -rf ../../kiddin9/ipt2socks/* ipt2socks
-# cp -rf ../../kiddin9/naiveproxy/* naiveproxy
-# cp -rf ../../kiddin9/redsocks2/* redsocks2
-# cp -rf ../../kiddin9/shadowsocks-rust/* shadowsocks-rust
-# cp -rf ../../kiddin9/simple-obfs/* simple-obfs
-# cp -rf ../../kiddin9/v2ray-plugin/* v2ray-plugin
-# cp -rf ../../kiddin9/trojan/* trojan
 #Passwall和Passwall2
 # svn export https://github.com/xiaorouji/openwrt-passwall/trunk openwrt-passwall
 # svn export https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall
 # svn export https://github.com/xiaorouji/openwrt-passwall2/trunk/luci-app-passwall2
-#VSSR（Hello Word）
-# svn export https://github.com/jerrykuku/lua-maxminddb/trunk lua-maxminddb
-# svn export https://github.com/jerrykuku/luci-app-vssr/trunk luci-app-vssr
 #OpenClash
 # svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash
 # svn export https://github.com/Siriling/OpenWRT-MyConfig/trunk/configs/istoreos/general/applications/luci-app-openclash temp/luci-app-openclash
@@ -175,26 +150,6 @@ elif [ "$1" = "x86" ]; then
     $GITHUB_WORKSPACE/scripts/preset-clash-core.sh amd64
 fi
 
-# 去广告
-#ADGuardHome（kiddin9）
-# svn export https://github.com/kiddin9/openwrt-packages/trunk/adguardhome
-# svn export https://github.com/kiddin9/openwrt-packages/trunk/luci-app-adguardhome
-mkdir luci-app-adguardhome
-cp -rf ../../kiddin9/luci-app-adguardhome/* luci-app-adguardhome
-cp -rf ../../MyConfig/configs/istoreos/general/applications/luci-app-adguardhome/* luci-app-adguardhome
-sed -i 's/拦截DNS服务器/拦截DNS服务器（默认用户名和密码均为root）/' luci-app-adguardhome/po/zh_Hans/adguardhome.po
-sed -i 's/+PACKAGE_$(PKG_NAME)_INCLUDE_binary:adguardhome//' luci-app-adguardhome/Makefile
-#ADGuardHome（kenzok8）
-# svn export https://github.com/kenzok8/openwrt-packages/trunk/adguardhome
-# svn export https://github.com/kenzok8/openwrt-packages/trunk/luci-app-adguardhome
-# svn export https://github.com/Siriling/OpenWRT-MyConfig/trunk/configs/lede/general/applications/luci-app-adguardhome temp/luci-app-adguardhome
-# cp -rf temp/luci-app-adguardhome/* luci-app-adguardhome
-# sed -i 's/默认账号和密码均为：admin/默认用户名和密码均为root/' luci-app-adguardhome/po/zh-cn/AdGuardHome.po
-# sed -i 's/网页管理账号和密码:admin ,端口:/端口/' luci-app-adguardhome/po/zh-cn/AdGuardHome.po
-#dnsfilter
-# svn export https://github.com/kenzok8/small-package/trunk/luci-app-dnsfilter
-#ikoolproxy
-# svn export https://github.com/kenzok8/small-package/trunk/luci-app-ikoolproxy
 
 # docker应用
 # svn export https://github.com/kenzok8/small-package/trunk/luci-app-filebrowser
@@ -204,12 +159,6 @@ sed -i 's/+PACKAGE_$(PKG_NAME)_INCLUDE_binary:adguardhome//' luci-app-adguardhom
 # rm -rf ../../customfeeds/luci/applications/luci-app-verysync
 # svn export https://github.com/kenzok8/small-package/trunk/verysync
 # svn export https://github.com/kenzok8/small-package/trunk/luci-app-verysync
-
-# VPN服务器
-# svn export https://github.com/kenzok8/small-package/trunk/luci-app-ssr-mudb-server
-# svn export https://github.com/kenzok8/small-package/trunk/luci-app-ipsec-server
-# svn export https://github.com/kenzok8/small-package/trunk/luci-app-pptp-server
-# svn export https://github.com/kenzok8/small-package/trunk/luci-app-softethervpn
 
 # DNS
 # svn export https://github.com/kenzok8/small-package/trunk/mosdns
@@ -292,31 +241,6 @@ CONFIG_PACKAGE_luci-app-eqos=y
 # CONFIG_PACKAGE_luci-app-gowebdav=y
 
 # 科学上网和代理应用
-#SSR
-CONFIG_PACKAGE_luci-app-ssr-plus=y
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_NONE_Client=y
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Libev_Client is not set
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Rust_Client is not set
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_NONE_Server=y
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Libev_Server is not set
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Rust_Server is not set
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_NONE_V2RAY is not set
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray is not set
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Xray=y
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ChinaDNS_NG is not set
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_MosDNS=n
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Hysteria is not set
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Tuic_Client is not set
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadow_TLS is not set
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_IPT2Socks is not set
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Kcptun is not set
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_NaiveProxy is not set
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Redsocks2 is not set
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Simple_Obfs=n
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_V2ray_Plugin=n
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Libev_Client=n
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Libev_Server=n
-# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan is not set
 
 #Passwall和Passwall2
 # CONFIG_PACKAGE_luci-app-passwall2=y
@@ -345,21 +269,8 @@ CONFIG_PACKAGE_luci-app-ssr-plus=y
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray_Plugin=y
 # CONFIG_PACKAGE_luci-app-haproxy-tcp=y
 
-#VSSR（HelloWord）
-# CONFIG_PACKAGE_luci-app-vssr=y
-# CONFIG_PACKAGE_luci-app-vssr_INCLUDE_Xray=y
-# CONFIG_PACKAGE_luci-app-vssr_INCLUDE_Trojan=y
-# CONFIG_PACKAGE_luci-app-vssr_INCLUDE_Kcptun=y
-# CONFIG_PACKAGE_luci-app-vssr_INCLUDE_Xray_plugin=y
-# CONFIG_PACKAGE_luci-app-vssr_INCLUDE_ShadowsocksR_Server=y
-
 #Openclash
 CONFIG_PACKAGE_luci-app-openclash=y
-
-# 去广告应用
-# CONFIG_PACKAGE_luci-app-adguardhome=y
-# CONFIG_PACKAGE_luci-app-dnsfilter=y
-# CONFIG_PACKAGE_luci-app-ikoolproxy=y
 
 # docker应用
 # CONFIG_PACKAGE_luci-app-aliyundrive-webdav=y
@@ -381,14 +292,6 @@ CONFIG_PACKAGE_luci-app-openclash=y
 # CONFIG_PACKAGE_luci-app-mjpg-streamer=y
 # CONFIG_PACKAGE_luci-app-ps3netsrv=y
 # CONFIG_PACKAGE_luci-app-usb-printer=y
-
-# VPN服务器
-# CONFIG_PACKAGE_luci-app-brook-server=y
-# CONFIG_PACKAGE_luci-app-ssr-mudb-server=y
-# CONFIG_PACKAGE_luci-app-trojan-server=y
-# CONFIG_PACKAGE_luci-app-openvpn-server=y
-# CONFIG_PACKAGE_luci-app-pptp-server=y
-# CONFIG_PACKAGE_luci-app-softethervpn=y
 
 # DNS
 # CONFIG_PACKAGE_luci-app-mosdns=y
