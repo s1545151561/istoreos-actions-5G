@@ -34,6 +34,7 @@ jobs:
           # - istoreos-22.03
           - istoreos-23.05
         ARCHITECTURE:
+          - mi3pro
           - rk33xx
           - rk35xx
           - x86
