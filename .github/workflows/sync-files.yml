@@ -15,6 +15,10 @@ jobs:
 
     - name: 下载架构编译配置文件
       run: |
+        mkdir -p ./mi3pro
+        wget -O  ./mi3pro/feeds.conf https://fw0.koolcenter.com/iStoreOS/r2s/feeds.conf
+        wget -O  ./mi3pro/.config https://fw0.koolcenter.com/iStoreOS/r2s/config.buildinfo
+      
         mkdir -p ./rk33xx
         wget -O  ./rk33xx/feeds.conf https://fw0.koolcenter.com/iStoreOS/r2s/feeds.conf
         wget -O  ./rk33xx/.config https://fw0.koolcenter.com/iStoreOS/r2s/config.buildinfo
